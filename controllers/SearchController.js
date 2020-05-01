@@ -6,8 +6,10 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 
 module.exports.getRecordsByAlphabet = function(req, res) {
     const options = {
-        page: 1,
-        limit: 10,
+        page: req.query.page || 1,
+        limit: req.query.limit || 10,
+        leanWithId:true,
+        lean: true,
         collation: {
           locale: 'en'
         }
